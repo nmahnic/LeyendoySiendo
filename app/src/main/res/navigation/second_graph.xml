@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/second_graph"
+    app:startDestination="@id/rvOrdersFragment">
+
+    <fragment
+        android:id="@+id/rvOrdersFragment"
+        android:name="com.nicomahnic.dadm.leyendoysiendo.ui.fragments.secondactivity.rvorders.RvOrdersFragment"
+        android:label="rv_orders_fragment"
+        tools:layout="@layout/rv_orders_fragment" >
+        <action
+            android:id="@+id/action_rvOrdersFragment_to_tabContainerFragment"
+            app:destination="@id/tabContainerFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/tabContainerFragment"
+        android:name="com.nicomahnic.dadm.leyendoysiendo.ui.fragments.secondactivity.tabcontainer.TabContainerFragment"
+        android:label="tab_container_fragment"
+        tools:layout="@layout/tab_container_fragment" />
+</navigation>
