@@ -1,19 +1,29 @@
 package com.nicomahnic.dadm.leyendoysiendo.ui.activities
 
-import androidx.appcompat.app.AppCompatActivity
+import android.content.Intent
 import android.os.Bundle
+import android.util.Log
+import androidx.appcompat.app.AppCompatActivity
 import com.nicomahnic.dadm.leyendoysiendo.R
-import com.nicomahnic.dadm.leyendoysiendo.ui.fragments.secondactivity.rvorders.RvOrdersFragment
+
 
 class SecondActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.second_activity)
-        if (savedInstanceState == null) {
-            supportFragmentManager.beginTransaction()
-                .replace(R.id.container, RvOrdersFragment.newInstance())
-                .commitNow()
+
+        val userName = intent.getStringExtra(Intent.EXTRA_TEXT)
+
+        userName?.let {
+            User.name = userName
         }
+
+        Log.d("NM", "ARGS: ${userName}")
+
+    }
+
+    object User{
+        var name = ""
     }
 }
