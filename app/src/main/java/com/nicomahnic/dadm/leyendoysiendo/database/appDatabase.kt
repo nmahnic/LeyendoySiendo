@@ -1,4 +1,4 @@
-package com.nicomahnic.dadm.dadm.leyendoysiendo.database
+package com.nicomahnic.dadm.leyendoysiendo.database
 
 import android.content.Context
 import androidx.room.Database

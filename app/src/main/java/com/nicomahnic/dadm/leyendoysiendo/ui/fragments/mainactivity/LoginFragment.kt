@@ -8,7 +8,7 @@ import android.util.Log
 import android.view.View
 import androidx.fragment.app.Fragment
 import com.google.android.material.snackbar.Snackbar
-import com.nicomahnic.dadm.dadm.leyendoysiendo.database.appDatabase
+import com.nicomahnic.dadm.leyendoysiendo.database.appDatabase
 import com.nicomahnic.dadm.leyendoysiendo.R
 import com.nicomahnic.dadm.leyendoysiendo.databinding.FragmentLoginBinding
 import com.nicomahnic.dadm.leyendoysiendo.domain.UserDao
@@ -82,17 +82,10 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
 
         if(userDao?.loadAllPersons()?.size == 0) {
             userDao?.insertPerson(UserEntity(id = 0, name = "Mash", password = "1234"))
-            userDao?.insertPerson(UserEntity(id = 0, name = "Juanma", password = "1234"))
-            userDao?.insertPerson(UserEntity(id = 0, name = "Juani", password = "1234"))
-            userDao?.insertPerson(UserEntity(id = 0, name = "Eric", password = "1234"))
-            userDao?.insertPerson(UserEntity(id = 0, name = "Tiago", password = "1234"))
+            userDao?.insertPerson(UserEntity(id = 0, name = "Luli", password = "1234"))
         }
         val usersList = userDao?.loadAllPersons()
         Log.d("NM","userList = ${usersList}")
-
-//        usersList!!.forEach { userDao ->
-//            userList.add(User(userDao!!.name,userDao.password))
-//        }
 
 
         binding.btnEnter.setOnClickListener {
