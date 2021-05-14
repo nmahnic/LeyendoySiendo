@@ -49,7 +49,7 @@ class RvBooksFragment : Fragment(R.layout.rv_books_fragment) {
                     Log.d("LiveData", "Loading...")
                 }
                 is Resource.Success -> {
-                    booksAdapter = BooksAdapter(result.data!!)
+                    booksAdapter = BooksAdapter(requireContext(),result.data!!)
                     binding.rvBooks.adapter = booksAdapter
                 }
                 is Resource.Failure -> {

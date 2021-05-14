@@ -7,4 +7,5 @@
     <string name="tab_container">Detalle</string>
     <string name="tab_order">Orden</string>
     <string name="tab_books">Libros</string>
+    <string name="register">Cargar Orden</string>
 </resources>

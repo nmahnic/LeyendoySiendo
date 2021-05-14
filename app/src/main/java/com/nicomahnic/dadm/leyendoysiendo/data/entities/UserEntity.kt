@@ -17,5 +17,8 @@ data class UserEntity(
     @ColumnInfo(name = "device_description")
     val password: String,
 
+    @ColumnInfo(name = "img_uri")
+    val img: String,
+
     var checked: Boolean = false
 )

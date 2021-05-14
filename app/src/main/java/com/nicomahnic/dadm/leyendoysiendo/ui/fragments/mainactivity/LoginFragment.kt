@@ -28,12 +28,12 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
     private var db: appDatabase? = null
     private var userDao: UserDao? = null
 
-    var btnUser : Boolean = false
-    var btnPasswd : Boolean = false
+    var btnUser: Boolean = false
+    var btnPasswd: Boolean = false
 
-    lateinit var v : View
+    lateinit var v: View
 
-    override fun onViewCreated (view: View, savedInstanceState: Bundle?) {
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentLoginBinding.bind(view)
 
@@ -80,32 +80,46 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
         db = appDatabase.getAppDataBase(v.context)
         userDao = db?.userDao()
 
-        if(userDao?.loadAllPersons()?.size == 0) {
-            userDao?.insertPerson(UserEntity(id = 0, name = "Mash", password = "1234"))
-            userDao?.insertPerson(UserEntity(id = 0, name = "Luli", password = "1234"))
+        if (userDao?.loadAllPersons()?.size == 0) {
+            userDao?.insertPerson(
+                UserEntity(
+                    id = 0,
+                    name = "Mash",
+                    password = "1234",
+                    img = "https://yt3.ggpht.com/ytc/AAUvwnigE2XbXLQMkJNuNnJEYvdUixTSMUQWTT_qLoxh6tQ=s900-c-k-c0x00ffffff-no-rj"
+                )
+            )
+            userDao?.insertPerson(
+                UserEntity(
+                    id = 0,
+                    name = "Luli",
+                    password = "1234",
+                    img = "https://media-exp1.licdn.com/dms/image/C4D35AQHLjJeP2QR5FQ/profile-framedphoto-shrink_200_200/0/1613432312275?e=1621058400&v=beta&t=o0dW6MV15_aRm1X7Uh42a_UzmWrjkpkUAzUs0RszqLo"                )
+            )
         }
         val usersList = userDao?.loadAllPersons()
-        Log.d("NM","userList = ${usersList}")
+        Log.d("NM", "userList = ${usersList}")
 
 
         binding.btnEnter.setOnClickListener {
-            val validUser = usersList!!.find{it!!.name == binding.edtUser.text.toString()}
+            val validUser = usersList!!.find { it!!.name == binding.edtUser.text.toString() }
 
-            validateUser(validUser)?.let{
+            validateUser(validUser)?.let {
                 val sendIntent = Intent(context, SecondActivity::class.java)
-                sendIntent.putExtra(Intent.EXTRA_TEXT, validUser!!.name)
+                sendIntent.putExtra("name", validUser!!.name)
+                sendIntent.putExtra("imgUri", validUser!!.img)
                 startActivity(sendIntent)
                 requireActivity().finish()
             }
         }
     }
 
-    private fun validateUser(validUser: UserEntity?) : Boolean? {
-        validUser?.let{ user ->
-            if(user.password == binding.edtPasswd.text.toString()) user.checked = true
-            if(user.checked) {
+    private fun validateUser(validUser: UserEntity?): Boolean? {
+        validUser?.let { user ->
+            if (user.password == binding.edtPasswd.text.toString()) user.checked = true
+            if (user.checked) {
                 return true
-            }else{
+            } else {
                 Snackbar.make(v, "Password no valida", Snackbar.LENGTH_SHORT).show()
             }
         } ?: run {
