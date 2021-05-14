@@ -18,5 +18,9 @@
         android:id="@+id/tabContainerFragment"
         android:name="com.nicomahnic.dadm.leyendoysiendo.ui.fragments.secondactivity.tabcontainer.TabContainerFragment"
         android:label="tab_container_fragment"
-        tools:layout="@layout/tab_container_fragment" />
+        tools:layout="@layout/tab_container_fragment" >
+        <argument
+            android:name="order"
+            app:argType="string" />
+    </fragment>
 </navigation>

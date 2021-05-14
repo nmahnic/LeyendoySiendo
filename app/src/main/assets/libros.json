@@ -1,10 +1,20 @@
 [
   {
-    "title": "bezkoder",
-    "year": 26
+    "title": "El Monstruo de Colores",
+    "author": "Anna Llenas",
+    "year": 2016,
+    "editorial": "Ed. Flamboyant",
+    "isbn": "9788494504235",
+    "description": "Alguna vez os habéis hecho un lío con vuestras emociones? Pues eso mismo le ha sucedido al monstruo de colores, que deberá aprender a poner en orden la alegría, la tristeza, la rabia, el miedo y la calma. Con este magnífico álbum ilustrado y sus expresivas ilustraciones, vuestro hijo podrá identificar con facilidad las distintas emociones que vive durante el día.",
+    "imgUrl": "https://i.pinimg.com/originals/fa/70/57/fa70579d36dbd34e7ad95e370f65a6df.jpg"
   },
   {
-    "title": "bezkoder Master",
-    "year": 30
+    "title": "El Monstruo de Colores va al Cole",
+    "author": "Anna Llenas",
+    "year": 2018,
+    "editorial": "Ed. Flamboyant",
+    "isbn": "9788494883248",
+    "description": "El Monstruo de Colores se enfrentará, esta vez, a su primer día en el colegio. Para empezar, ¡no sabe ni qué es! Está un poquito nervioso. ¡No sufras Monstruo! Allí te esperan muchas aventuras y nuevos amigos. Página a página vamos a acompañarle en el descubrimiento de las rutinas, espacios y dinámicas de la escuela, y conoceremos a sus compañeros de clase. ¿Le gustará la experiencia, al Monstruo? ¡Seguro que sí!",
+    "imgUrl": "https://i.pinimg.com/564x/72/15/fc/7215fc1ce849f06fb23264855a353177.jpg"
   }
 ]

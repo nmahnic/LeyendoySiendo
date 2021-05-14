@@ -8,7 +8,14 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="top">#2E376D</color>
-    <color name="screenbck">#343E7A</color>
-    <color name="reseñadelibros">#93ECE9</color>
-    <color name="leyendoysiendo">#FBE99E</color>
+    <color name="screenBackground1">#343E7A</color>
+    <color name="screenBackground2">#546098</color>
+<!--    <color name="top2">#394167</color>-->
+    <color name="top2">#343E7A</color>
+    <color name="yellow_letters">#FBE99E</color>
+    <color name="light_blue_600">#FF039BE5</color>
+    <color name="light_blue_900">#FF01579B</color>
+    <color name="light_blue_A200">#FF40C4FF</color>
+    <color name="light_blue_A400">#FF00B0FF</color>
+    <color name="black_overlay">#66000000</color>
 </resources>
