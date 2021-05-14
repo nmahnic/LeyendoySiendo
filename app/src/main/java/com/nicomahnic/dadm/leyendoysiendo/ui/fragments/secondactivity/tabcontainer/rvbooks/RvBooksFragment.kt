@@ -1,26 +1,16 @@
-package com.nicomahnic.dadm.leyendoysiendo.ui.fragments.secondactivity.rvbooks
+package com.nicomahnic.dadm.leyendoysiendo.ui.fragments.secondactivity.tabcontainer.rvbooks
 
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
-import androidx.lifecycle.Observer
-import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.nicomahnic.dadm.leyendoysiendo.R
 import com.nicomahnic.dadm.leyendoysiendo.database.appDatabase
 import com.nicomahnic.dadm.leyendoysiendo.databinding.RvBooksFragmentBinding
-import com.nicomahnic.dadm.leyendoysiendo.databinding.RvOrdersFragmentBinding
 import com.nicomahnic.dadm.leyendoysiendo.entities.Book
-import com.nicomahnic.dadm.leyendoysiendo.entities.Order
 import com.nicomahnic.dadm.leyendoysiendo.ui.adapter.BooksAdapter
-import com.nicomahnic.dadm.leyendoysiendo.ui.adapter.OrdersAdapter
-import com.nicomahnic.dadm.leyendoysiendo.ui.fragments.secondactivity.rvorders.RvOrdersFragmentDirections
-import com.nicomahnic.dadm.leyendoysiendo.ui.fragments.secondactivity.rvorders.RvOrdersViewModel
 import com.nicomahnic.dadm.leyendoysiendo.ui.fragments.secondactivity.tabcontainer.TabContainerViewModel
 
 class RvBooksFragment : Fragment(R.layout.rv_books_fragment) {

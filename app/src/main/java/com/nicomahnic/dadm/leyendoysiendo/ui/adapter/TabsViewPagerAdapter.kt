@@ -3,8 +3,8 @@ package com.nicomahnic.dadm.leyendoysiendo.ui.adapter
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.viewpager2.adapter.FragmentStateAdapter
-import com.nicomahnic.dadm.leyendoysiendo.ui.fragments.secondactivity.bookdetails.BookDetailsFragment
-import com.nicomahnic.dadm.leyendoysiendo.ui.fragments.secondactivity.rvbooks.RvBooksFragment
+import com.nicomahnic.dadm.leyendoysiendo.ui.fragments.secondactivity.tabcontainer.bookdetails.BookDetailsFragment
+import com.nicomahnic.dadm.leyendoysiendo.ui.fragments.secondactivity.tabcontainer.rvbooks.RvBooksFragment
 
 class TabsViewPagerAdapter (fragmentActivity: FragmentActivity) : FragmentStateAdapter(fragmentActivity) {
 

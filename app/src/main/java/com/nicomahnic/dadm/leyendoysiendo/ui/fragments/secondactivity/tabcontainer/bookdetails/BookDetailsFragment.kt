@@ -1,4 +1,4 @@
-package com.nicomahnic.dadm.leyendoysiendo.ui.fragments.secondactivity.bookdetails
+package com.nicomahnic.dadm.leyendoysiendo.ui.fragments.secondactivity.tabcontainer.bookdetails
 
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
@@ -6,7 +6,6 @@ import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.View
 import androidx.fragment.app.activityViewModels
-import androidx.lifecycle.Observer
 import com.nicomahnic.dadm.leyendoysiendo.R
 import com.nicomahnic.dadm.leyendoysiendo.databinding.BookDetailsFragmentBinding
 import com.nicomahnic.dadm.leyendoysiendo.ui.fragments.secondactivity.tabcontainer.TabContainerViewModel

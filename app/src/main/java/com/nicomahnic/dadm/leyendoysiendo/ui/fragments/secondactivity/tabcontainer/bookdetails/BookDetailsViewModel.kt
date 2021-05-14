@@ -1,4 +1,4 @@
-package com.nicomahnic.dadm.leyendoysiendo.ui.fragments.secondactivity.bookdetails
+package com.nicomahnic.dadm.leyendoysiendo.ui.fragments.secondactivity.tabcontainer.bookdetails
 
 import androidx.lifecycle.ViewModel
 
