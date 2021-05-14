@@ -42,6 +42,7 @@ class SecondActivity : AppCompatActivity() {
         navView.getHeaderView(0).btn_logout.setOnClickListener {
             AuthUI.getInstance().signOut(this).addOnSuccessListener {
                 startActivity(Intent(this, MainActivity::class.java))
+                finish()
             }
         }
         navView.getHeaderView(0).txt_nav_header.text = User.name
