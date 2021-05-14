@@ -1,4 +1,4 @@
-package com.nicomahnic.dadm.leyendoysiendo.database
+package com.nicomahnic.dadm.leyendoysiendo.data.database
 
 import android.content.Context
 import androidx.room.Database
@@ -6,7 +6,7 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.nicomahnic.dadm.leyendoysiendo.domain.UserDao
 
-import com.nicomahnic.dadm.leyendoysiendo.entities.UserEntity
+import com.nicomahnic.dadm.leyendoysiendo.data.entities.UserEntity
 
 @Database(entities = [UserEntity::class], version = 1, exportSchema = false)
 

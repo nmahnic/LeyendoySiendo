@@ -28,7 +28,7 @@ class BookDetailsFragment : Fragment(R.layout.book_details_fragment) {
     override fun onStart() {
         super.onStart()
 
-        viewModelTab.name.observe(viewLifecycleOwner, { result ->
+        viewModelTab.clientName.observe(viewLifecycleOwner, { result ->
             binding.txtTitle.text = result.toString()
         })
     }

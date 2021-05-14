@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/rvOrdersFragment"
         android:name="com.nicomahnic.dadm.leyendoysiendo.ui.fragments.secondactivity.rvorders.RvOrdersFragment"
-        android:label="rv_orders_fragment"
+        android:label="@string/tab_books"
         tools:layout="@layout/rv_orders_fragment" >
         <action
             android:id="@+id/action_rvOrdersFragment_to_tabContainerFragment"
@@ -17,10 +17,13 @@
     <fragment
         android:id="@+id/tabContainerFragment"
         android:name="com.nicomahnic.dadm.leyendoysiendo.ui.fragments.secondactivity.tabcontainer.TabContainerFragment"
-        android:label="tab_container_fragment"
-        tools:layout="@layout/tab_container_fragment" >
+        android:label="@string/tab_container"
+        tools:layout="@layout/tab_container_fragment">
         <argument
-            android:name="order"
+            android:name="orderNum"
+            app:argType="long" />
+        <argument
+            android:name="clientName"
             app:argType="string" />
     </fragment>
 </navigation>

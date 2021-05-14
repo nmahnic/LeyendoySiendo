@@ -1,4 +1,4 @@
-package com.nicomahnic.dadm.leyendoysiendo.entities
+package com.nicomahnic.dadm.leyendoysiendo.data.entities
 
 data class Book(
     val title: String,
@@ -9,3 +9,5 @@ data class Book(
     val description: String,
     val imgUrl: String
 )
+
+data class BoolList(val results: List<Book> = listOf())

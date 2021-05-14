@@ -2,14 +2,16 @@ package com.nicomahnic.dadm.leyendoysiendo.ui.fragments.secondactivity.tabcontai
 
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.View
 import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.nicomahnic.dadm.leyendoysiendo.R
-import com.nicomahnic.dadm.leyendoysiendo.database.appDatabase
+import com.nicomahnic.dadm.leyendoysiendo.core.Resource
+import com.nicomahnic.dadm.leyendoysiendo.data.database.appDatabase
 import com.nicomahnic.dadm.leyendoysiendo.databinding.RvBooksFragmentBinding
-import com.nicomahnic.dadm.leyendoysiendo.entities.Book
+import com.nicomahnic.dadm.leyendoysiendo.data.entities.Book
 import com.nicomahnic.dadm.leyendoysiendo.ui.adapter.BooksAdapter
 import com.nicomahnic.dadm.leyendoysiendo.ui.fragments.secondactivity.tabcontainer.TabContainerViewModel
 
@@ -40,9 +42,20 @@ class RvBooksFragment : Fragment(R.layout.rv_books_fragment) {
         linearLayoutManager = LinearLayoutManager(context)
         binding.rvBooks.layoutManager = linearLayoutManager
 
-        viewModelTab.books.observe(viewLifecycleOwner, { result ->
-            booksAdapter = BooksAdapter(result)
-            binding.rvBooks.adapter = booksAdapter
+        viewModelTab.fetchBooks().observe(viewLifecycleOwner, { result ->
+            Log.d("NM","fetch $result")
+            when(result){
+                is Resource.Loading -> {
+                    Log.d("LiveData", "Loading...")
+                }
+                is Resource.Success -> {
+                    booksAdapter = BooksAdapter(result.data!!)
+                    binding.rvBooks.adapter = booksAdapter
+                }
+                is Resource.Failure -> {
+                    Log.d("LiveData", "${result.exception}")
+                }
+            }
         })
     }
 

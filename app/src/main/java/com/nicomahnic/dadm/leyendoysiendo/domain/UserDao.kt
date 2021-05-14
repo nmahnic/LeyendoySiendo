@@ -1,7 +1,7 @@
 package com.nicomahnic.dadm.leyendoysiendo.domain
 
 import androidx.room.*
-import com.nicomahnic.dadm.leyendoysiendo.entities.UserEntity
+import com.nicomahnic.dadm.leyendoysiendo.data.entities.UserEntity
 
 @Dao
 interface UserDao {

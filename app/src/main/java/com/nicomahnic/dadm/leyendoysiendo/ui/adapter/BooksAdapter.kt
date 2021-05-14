@@ -6,11 +6,14 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.nicomahnic.dadm.leyendoysiendo.R
-import com.nicomahnic.dadm.leyendoysiendo.entities.Book
+import com.nicomahnic.dadm.leyendoysiendo.data.entities.Book
+import com.nicomahnic.dadm.leyendoysiendo.databinding.ItemBookBinding
 
 class BooksAdapter(
-    private var bookList: MutableList<Book>
+    private var bookList: List<Book>
 ): RecyclerView.Adapter<BooksAdapter.OrderHolder>() {
+
+    private lateinit var binding: ItemBookBinding
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): OrderHolder {
         val view =  LayoutInflater.from(parent.context).inflate(R.layout.item_book,parent,false)
@@ -18,7 +21,7 @@ class BooksAdapter(
     }
 
     override fun onBindViewHolder(holder: OrderHolder, position: Int) {
-        holder.setName(bookList[position].title)
+        holder.setContent(bookList[position])
     }
 
     override fun getItemCount(): Int {
@@ -27,9 +30,11 @@ class BooksAdapter(
 
     inner class OrderHolder (itemView: View) : RecyclerView.ViewHolder(itemView) {
 
-        fun setName(name: String) {
-            val txt: TextView = itemView.findViewById(R.id.txt_book_title)
-            txt.text = name
+        fun setContent(book: Book) {
+            binding = ItemBookBinding.bind(itemView)
+            binding.txtBookTitle.text = book.title
+            binding.txtAuthor.text = book.author
+            binding.txtDescription.text = book.description
         }
     }
 }

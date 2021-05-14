@@ -1,7 +1,10 @@
 <resources>
     <string name="app_name">LeyendoySiendo</string>
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="dummy_button">Dummy Button</string>
-    <string name="dummy_content">DUMMY\nCONTENT</string>
+
+    <string name="action_settings">Preferencias</string>
+    <string name="orders_rcv">Ordenes</string>
+    <string name="tab_container">Detalle</string>
+    <string name="tab_order">Orden</string>
+    <string name="tab_books">Libros</string>
 </resources>

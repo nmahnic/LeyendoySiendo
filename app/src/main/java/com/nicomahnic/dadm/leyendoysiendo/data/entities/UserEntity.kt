@@ -1,4 +1,4 @@
-package com.nicomahnic.dadm.leyendoysiendo.entities
+package com.nicomahnic.dadm.leyendoysiendo.data.entities
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity

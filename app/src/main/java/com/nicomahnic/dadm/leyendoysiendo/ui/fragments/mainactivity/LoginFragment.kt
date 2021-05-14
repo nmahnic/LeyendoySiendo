@@ -8,11 +8,11 @@ import android.util.Log
 import android.view.View
 import androidx.fragment.app.Fragment
 import com.google.android.material.snackbar.Snackbar
-import com.nicomahnic.dadm.leyendoysiendo.database.appDatabase
+import com.nicomahnic.dadm.leyendoysiendo.data.database.appDatabase
 import com.nicomahnic.dadm.leyendoysiendo.R
 import com.nicomahnic.dadm.leyendoysiendo.databinding.FragmentLoginBinding
 import com.nicomahnic.dadm.leyendoysiendo.domain.UserDao
-import com.nicomahnic.dadm.leyendoysiendo.entities.UserEntity
+import com.nicomahnic.dadm.leyendoysiendo.data.entities.UserEntity
 import com.nicomahnic.dadm.leyendoysiendo.ui.activities.SecondActivity
 import kotlinx.android.synthetic.main.fragment_login.*
 

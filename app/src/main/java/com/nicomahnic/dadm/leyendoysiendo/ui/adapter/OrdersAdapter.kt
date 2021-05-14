@@ -3,15 +3,17 @@ package com.nicomahnic.dadm.leyendoysiendo.ui.adapter
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.nicomahnic.dadm.leyendoysiendo.R
-import com.nicomahnic.dadm.leyendoysiendo.entities.Order
+import com.nicomahnic.dadm.leyendoysiendo.databinding.ItemOrderBinding
+import com.nicomahnic.dadm.leyendoysiendo.data.entities.Order
 
 class OrdersAdapter(
     private var orderList: List<Order>,
     val onItemClick: (Int) -> Unit
 ): RecyclerView.Adapter<OrdersAdapter.OrderHolder>() {
+
+    private lateinit var binding: ItemOrderBinding
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): OrderHolder {
         val view =  LayoutInflater.from(parent.context).inflate(R.layout.item_order,parent,false)
@@ -19,7 +21,7 @@ class OrdersAdapter(
     }
 
     override fun onBindViewHolder(holder: OrderHolder, position: Int) {
-        holder.setName(orderList[position].clientName)
+        holder.setItem(orderList[position])
 
         holder.getItem(position)
     }
@@ -30,9 +32,10 @@ class OrdersAdapter(
 
     inner class OrderHolder (itemView: View) : RecyclerView.ViewHolder(itemView) {
 
-        fun setName(name: String) {
-            val txt: TextView = itemView.findViewById(R.id.txt_name_item)
-            txt.text = name
+        fun setItem(order: Order) {
+            binding = ItemOrderBinding.bind(itemView)
+            binding.txtNameItem.text = order.clientName
+            binding.txtOrderNum.text = order.orderNum.toString().padStart(5,'0')
         }
 
         fun getItem (position: Int): Unit {
