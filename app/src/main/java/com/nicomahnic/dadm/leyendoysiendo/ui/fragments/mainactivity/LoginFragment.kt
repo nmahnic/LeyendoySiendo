@@ -1,5 +1,6 @@
 package com.nicomahnic.dadm.leyendoysiendo.ui.fragments.mainactivity
 
+import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
@@ -7,12 +8,16 @@ import android.text.TextWatcher
 import android.util.Log
 import android.view.View
 import androidx.fragment.app.Fragment
+import com.firebase.ui.auth.AuthUI
+import com.firebase.ui.auth.ErrorCodes
+import com.firebase.ui.auth.IdpResponse
 import com.google.android.material.snackbar.Snackbar
-import com.nicomahnic.dadm.leyendoysiendo.data.database.appDatabase
+import com.google.firebase.auth.FirebaseAuth
 import com.nicomahnic.dadm.leyendoysiendo.R
+import com.nicomahnic.dadm.leyendoysiendo.data.database.appDatabase
+import com.nicomahnic.dadm.leyendoysiendo.data.entities.UserEntity
 import com.nicomahnic.dadm.leyendoysiendo.databinding.FragmentLoginBinding
 import com.nicomahnic.dadm.leyendoysiendo.domain.UserDao
-import com.nicomahnic.dadm.leyendoysiendo.data.entities.UserEntity
 import com.nicomahnic.dadm.leyendoysiendo.ui.activities.SecondActivity
 import kotlinx.android.synthetic.main.fragment_login.*
 
@@ -24,6 +29,8 @@ import kotlinx.android.synthetic.main.fragment_login.*
  */
 class LoginFragment : Fragment(R.layout.fragment_login) {
 
+    val authUser: FirebaseAuth by lazy { FirebaseAuth.getInstance() }
+
     private lateinit var binding: FragmentLoginBinding
     private var db: appDatabase? = null
     private var userDao: UserDao? = null
@@ -33,9 +40,16 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
 
     lateinit var v: View
 
+    companion object {
+        private const val RC_SIGN_IN = 342
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentLoginBinding.bind(view)
+
+
+        googleLogin()
 
         v = view
 
@@ -44,6 +58,44 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
         binding.edtPasswd.apply { addTextChangedListener(passwdWatcher) }
 
         binding.btnEnter.isEnabled = false
+    }
+
+    private fun isAuth() {
+        if (authUser.currentUser != null) {
+            val sendIntent = Intent(context, SecondActivity::class.java)
+            sendIntent.putExtra("name", authUser.currentUser!!.displayName)
+            sendIntent.putExtra("imgUri", authUser.currentUser!!.photoUrl.toString())
+            startActivity(sendIntent)
+            requireActivity().finish()
+        }
+    }
+
+    private fun googleLogin() {
+        val providers = arrayListOf(AuthUI.IdpConfig.GoogleBuilder().build())
+        binding.btnLogin.setOnClickListener {
+            startActivityForResult(
+                AuthUI.getInstance()
+                    .createSignInIntentBuilder()
+                    .setAvailableProviders(providers)
+                    .setIsSmartLockEnabled(false)
+                    .build(),
+                RC_SIGN_IN
+            )
+        }
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+
+        if (requestCode == RC_SIGN_IN) {
+            val response = IdpResponse.fromResultIntent(data)
+
+            if (resultCode == Activity.RESULT_OK) {
+                isAuth()
+            } else {
+                Log.d("NM", "Error Autenticación Firebase: ${response!!.error!!.errorCode}")
+            }
+        }
     }
 
     private val userWatcher = object : TextWatcher {
@@ -94,7 +146,8 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
                     id = 0,
                     name = "Luli",
                     password = "1234",
-                    img = "https://media-exp1.licdn.com/dms/image/C4D35AQHLjJeP2QR5FQ/profile-framedphoto-shrink_200_200/0/1613432312275?e=1621058400&v=beta&t=o0dW6MV15_aRm1X7Uh42a_UzmWrjkpkUAzUs0RszqLo"                )
+                    img = "https://media-exp1.licdn.com/dms/image/C4D35AQHLjJeP2QR5FQ/profile-framedphoto-shrink_200_200/0/1613432312275?e=1621058400&v=beta&t=o0dW6MV15_aRm1X7Uh42a_UzmWrjkpkUAzUs0RszqLo"
+                )
             )
         }
         val usersList = userDao?.loadAllPersons()

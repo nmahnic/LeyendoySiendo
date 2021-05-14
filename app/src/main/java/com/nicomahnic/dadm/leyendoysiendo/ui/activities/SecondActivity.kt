@@ -14,6 +14,7 @@ import androidx.navigation.ui.*
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.load.resource.bitmap.CircleCrop
+import com.firebase.ui.auth.AuthUI
 import com.nicomahnic.dadm.leyendoysiendo.R
 import kotlinx.android.synthetic.main.nav_header_main.*
 import kotlinx.android.synthetic.main.nav_header_main.view.*
@@ -38,6 +39,11 @@ class SecondActivity : AppCompatActivity() {
 
         navController = findNavController(R.id.navHostFragment)
         navView.setupWithNavController(navController)
+        navView.getHeaderView(0).btn_logout.setOnClickListener {
+            AuthUI.getInstance().signOut(this).addOnSuccessListener {
+                startActivity(Intent(this, MainActivity::class.java))
+            }
+        }
         navView.getHeaderView(0).txt_nav_header.text = User.name
         Glide.with(this) //1
             .load(imgUri)

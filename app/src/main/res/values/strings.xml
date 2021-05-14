@@ -8,4 +8,6 @@
     <string name="tab_order">Orden</string>
     <string name="tab_books">Libros</string>
     <string name="register">Cargar Orden</string>
+    <string name="editStock">Modificar Stock</string>
+    <string name="logout">Cerrar sesión</string>
 </resources>
