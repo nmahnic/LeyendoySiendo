@@ -33,9 +33,7 @@ class SecondActivity : AppCompatActivity() {
 
         val userName = intent.getStringExtra("name")
         val imgUri = intent.getStringExtra("imgUri")
-        userName?.let { name ->
-            User.name = name
-        }
+        userName?.let { name -> User.name = name }
 
         navController = findNavController(R.id.navHostFragment)
         navView.setupWithNavController(navController)
@@ -45,6 +43,7 @@ class SecondActivity : AppCompatActivity() {
                 finish()
             }
         }
+
         navView.getHeaderView(0).txt_nav_header.text = User.name
         Glide.with(this) //1
             .load(imgUri)

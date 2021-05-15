@@ -32,7 +32,7 @@
         android:backgroundTint="@color/white"
         android:textColorHint="@color/white"
         android:textColor="@color/white"
-        android:inputType="textPersonName|text|textCapWords"
+        android:inputType="textPersonName|text"
         app:layout_constraintBottom_toTopOf="@+id/edtPasswd"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

@@ -26,4 +26,9 @@
             android:name="clientName"
             app:argType="string" />
     </fragment>
+    <fragment
+        android:id="@+id/registerOrder"
+        android:name="com.nicomahnic.dadm.leyendoysiendo.ui.fragments.secondactivity.drawer.RegisterOrderFragment"
+        android:label="@string/registerOrder"
+        tools:layout="@layout/register_order_fragment" />
 </navigation>

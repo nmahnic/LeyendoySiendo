@@ -10,4 +10,5 @@
     <string name="register">Cargar Orden</string>
     <string name="editStock">Modificar Stock</string>
     <string name="logout">Cerrar sesión</string>
+    <string name="registerOrder">Agregar Orden</string>
 </resources>
