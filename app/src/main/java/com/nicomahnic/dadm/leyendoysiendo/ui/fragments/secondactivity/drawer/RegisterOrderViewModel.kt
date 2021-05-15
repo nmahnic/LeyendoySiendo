@@ -1,13 +1,12 @@
 package com.nicomahnic.dadm.leyendoysiendo.ui.fragments.secondactivity.drawer
 
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.liveData
+import androidx.lifecycle.*
 import com.nicomahnic.dadm.leyendoysiendo.core.Resource
 import com.nicomahnic.dadm.leyendoysiendo.data.entities.Book
+import com.nicomahnic.dadm.leyendoysiendo.data.entities.OrderEntity
 import com.nicomahnic.dadm.leyendoysiendo.repository.BookRepository
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 class RegisterOrderViewModel(private val repo: BookRepository) : ViewModel() {
     val clientName = MutableLiveData<String>()
@@ -19,6 +18,14 @@ class RegisterOrderViewModel(private val repo: BookRepository) : ViewModel() {
             emit(Resource.Success(repo.getBooks()))
         }catch (e: Exception){
             emit(Resource.Failure(e))
+        }
+    }
+
+    fun insertOrder(clientName: String, bookList: List<Book>){
+        viewModelScope.launch {
+            repo.insertOrder(
+                OrderEntity(name = clientName)
+            )
         }
     }
 

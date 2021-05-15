@@ -9,6 +9,7 @@ import androidx.navigation.fragment.navArgs
 import com.google.android.material.tabs.TabLayoutMediator
 import com.nicomahnic.dadm.leyendoysiendo.R
 import com.nicomahnic.dadm.leyendoysiendo.data.BookDataSource
+import com.nicomahnic.dadm.leyendoysiendo.data.database.AppDatabase
 import com.nicomahnic.dadm.leyendoysiendo.databinding.TabContainerFragmentBinding
 import com.nicomahnic.dadm.leyendoysiendo.repository.BookRepositoryImpl
 import com.nicomahnic.dadm.leyendoysiendo.ui.adapter.TabsViewPagerAdapter
@@ -21,7 +22,10 @@ class TabContainerFragment : Fragment(R.layout.tab_container_fragment) {
     private val viewModelTab: TabContainerViewModel by activityViewModels() {
         BookViewModelFactory(
             BookRepositoryImpl(
-                BookDataSource(requireContext())
+                BookDataSource(
+                    requireContext(),
+                    AppDatabase.getAppDataBase(requireActivity().applicationContext)
+                )
             )
         )
     }

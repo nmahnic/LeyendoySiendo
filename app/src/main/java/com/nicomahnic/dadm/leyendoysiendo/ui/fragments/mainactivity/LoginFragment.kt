@@ -9,12 +9,11 @@ import android.util.Log
 import android.view.View
 import androidx.fragment.app.Fragment
 import com.firebase.ui.auth.AuthUI
-import com.firebase.ui.auth.ErrorCodes
 import com.firebase.ui.auth.IdpResponse
 import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.FirebaseAuth
 import com.nicomahnic.dadm.leyendoysiendo.R
-import com.nicomahnic.dadm.leyendoysiendo.data.database.appDatabase
+import com.nicomahnic.dadm.leyendoysiendo.data.database.AppDatabase
 import com.nicomahnic.dadm.leyendoysiendo.data.entities.UserEntity
 import com.nicomahnic.dadm.leyendoysiendo.databinding.FragmentLoginBinding
 import com.nicomahnic.dadm.leyendoysiendo.domain.UserDao
@@ -32,7 +31,7 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
     val authUser: FirebaseAuth by lazy { FirebaseAuth.getInstance() }
 
     private lateinit var binding: FragmentLoginBinding
-    private var db: appDatabase? = null
+    private var db: AppDatabase? = null
     private var userDao: UserDao? = null
 
     var btnUser: Boolean = false
@@ -129,7 +128,7 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
     override fun onStart() {
         super.onStart()
 
-        db = appDatabase.getAppDataBase(v.context)
+        db = AppDatabase.getAppDataBase(v.context)
         userDao = db?.userDao()
 
         if (userDao?.loadAllPersons()?.size == 0) {

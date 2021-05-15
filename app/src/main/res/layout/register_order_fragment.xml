@@ -29,7 +29,7 @@
         android:backgroundTint="@color/white"
         android:ems="10"
         android:hint="Nombre"
-        android:inputType="textPersonName|text"
+        android:inputType="textPersonName|text|textCapWords"
         android:textColor="@color/white"
         android:textColorHint="@color/white"
         app:layout_constraintBottom_toTopOf="@+id/rvOrderBooks"

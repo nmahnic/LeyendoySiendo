@@ -9,5 +9,3 @@ data class Book(
     val description: String,
     val imgUrl: String
 )
-
-data class BoolList(val results: List<Book> = listOf())

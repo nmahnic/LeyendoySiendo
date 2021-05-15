@@ -1,0 +1,17 @@
+package com.nicomahnic.dadm.leyendoysiendo.data.entities
+
+import androidx.room.ColumnInfo
+import androidx.room.Entity
+import androidx.room.PrimaryKey
+
+
+@Entity(tableName = "orders")
+data class OrderEntity(
+
+    @PrimaryKey(autoGenerate = true)
+    var id: Long = 0,
+
+    @ColumnInfo(name = "client_name")
+    val name: String
+
+)

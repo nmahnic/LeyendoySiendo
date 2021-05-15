@@ -8,7 +8,7 @@ import android.view.View
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.nicomahnic.dadm.leyendoysiendo.R
-import com.nicomahnic.dadm.leyendoysiendo.data.database.appDatabase
+import com.nicomahnic.dadm.leyendoysiendo.data.database.AppDatabase
 import com.nicomahnic.dadm.leyendoysiendo.databinding.RvOrdersFragmentBinding
 import com.nicomahnic.dadm.leyendoysiendo.data.entities.Order
 import com.nicomahnic.dadm.leyendoysiendo.ui.activities.SecondActivity
@@ -20,7 +20,7 @@ class RvOrdersFragment : Fragment(R.layout.rv_orders_fragment) {
     private lateinit var v: View
     private lateinit var viewModel: RvOrdersViewModel
     private var orderList: MutableList<Order> = ArrayList<Order>()
-    private var db: appDatabase? = null
+    private var db: AppDatabase? = null
 
     private lateinit var linearLayoutManager: LinearLayoutManager
     private lateinit var ordersAdapter: OrdersAdapter

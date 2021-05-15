@@ -9,7 +9,7 @@ import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.nicomahnic.dadm.leyendoysiendo.R
 import com.nicomahnic.dadm.leyendoysiendo.core.Resource
-import com.nicomahnic.dadm.leyendoysiendo.data.database.appDatabase
+import com.nicomahnic.dadm.leyendoysiendo.data.database.AppDatabase
 import com.nicomahnic.dadm.leyendoysiendo.databinding.RvBooksFragmentBinding
 import com.nicomahnic.dadm.leyendoysiendo.data.entities.Book
 import com.nicomahnic.dadm.leyendoysiendo.ui.adapter.BooksAdapter
@@ -22,7 +22,7 @@ class RvBooksFragment : Fragment(R.layout.rv_books_fragment) {
     private lateinit var v: View
     private lateinit var viewModel: RvBooksViewModel
     private lateinit var bookList: List<Book>
-    private var db: appDatabase? = null
+    private var db: AppDatabase? = null
 
     private lateinit var linearLayoutManager: LinearLayoutManager
     private lateinit var booksAdapter: BooksAdapter
