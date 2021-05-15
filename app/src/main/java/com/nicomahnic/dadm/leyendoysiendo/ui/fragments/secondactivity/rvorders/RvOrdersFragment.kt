@@ -1,11 +1,11 @@
 package com.nicomahnic.dadm.leyendoysiendo.ui.fragments.secondactivity.rvorders
-
+import androidx.lifecycle.Observer
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.View
 import androidx.fragment.app.activityViewModels
-import androidx.lifecycle.Observer
+import androidx.fragment.app.viewModels
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.nicomahnic.dadm.leyendoysiendo.R
@@ -22,7 +22,7 @@ class RvOrdersFragment : Fragment(R.layout.rv_orders_fragment) {
 
     private lateinit var binding: RvOrdersFragmentBinding
     private lateinit var v: View
-    private val viewModel: RvOrdersViewModel by activityViewModels(){
+    private val viewModel by viewModels<RvOrdersViewModel>{
         ViewModelFactory(
             RepositoryImpl(
                 DataSource(
@@ -53,7 +53,7 @@ class RvOrdersFragment : Fragment(R.layout.rv_orders_fragment) {
         linearLayoutManager = LinearLayoutManager(context)
         binding.rvOrders.layoutManager = linearLayoutManager
 
-        viewModel.fetchOrderList.observe(viewLifecycleOwner, Observer { result ->
+        viewModel.fetchOrderList().observe(viewLifecycleOwner, Observer { result ->
             when(result){
                 is Resource.Loading -> {
                     Log.d("LiveData", "Loading...")
