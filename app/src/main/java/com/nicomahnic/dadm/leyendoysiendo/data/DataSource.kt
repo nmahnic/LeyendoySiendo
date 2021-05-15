@@ -9,7 +9,7 @@ import com.nicomahnic.dadm.leyendoysiendo.data.entities.Book
 import com.nicomahnic.dadm.leyendoysiendo.data.entities.OrderEntity
 import com.nicomahnic.dadm.leyendoysiendo.utils.getJsonDataFromAsset
 
-class BookDataSource(
+class DataSource(
     private val context: Context,
     private val appDatabase: AppDatabase
 ) {
@@ -27,5 +27,9 @@ class BookDataSource(
 
     suspend fun insertOrderIntoRoom(order: OrderEntity){
         appDatabase.orderDato().insertOrder(order)
+    }
+
+    suspend fun getOrdersIntoRoom(): List<OrderEntity>? {
+        return appDatabase.orderDato().getOrders()
     }
 }

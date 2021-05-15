@@ -31,6 +31,10 @@ class BookDetailsFragment : Fragment(R.layout.book_details_fragment) {
         viewModelTab.clientName.observe(viewLifecycleOwner, { result ->
             binding.txtTitle.text = result.toString()
         })
+
+        viewModelTab.orderNum.observe(viewLifecycleOwner, { result ->
+            binding.txtOrderNum.text = result.toString().padStart(5,'0')
+        })
     }
 
 

@@ -7,9 +7,10 @@ import androidx.recyclerview.widget.RecyclerView
 import com.nicomahnic.dadm.leyendoysiendo.R
 import com.nicomahnic.dadm.leyendoysiendo.databinding.ItemOrderBinding
 import com.nicomahnic.dadm.leyendoysiendo.data.entities.Order
+import com.nicomahnic.dadm.leyendoysiendo.data.entities.OrderEntity
 
 class OrdersAdapter(
-    private var orderList: List<Order>,
+    private var orderList: List<OrderEntity>,
     val onItemClick: (Int) -> Unit
 ): RecyclerView.Adapter<OrdersAdapter.OrderHolder>() {
 
@@ -32,10 +33,10 @@ class OrdersAdapter(
 
     inner class OrderHolder (itemView: View) : RecyclerView.ViewHolder(itemView) {
 
-        fun setItem(order: Order) {
+        fun setItem(order: OrderEntity) {
             binding = ItemOrderBinding.bind(itemView)
-            binding.txtNameItem.text = order.clientName
-            binding.txtOrderNum.text = order.orderNum.toString().padStart(5,'0')
+            binding.txtNameItem.text = order.name
+            binding.txtOrderNum.text = order.id.toString().padStart(5,'0')
         }
 
         fun getItem (position: Int): Unit {

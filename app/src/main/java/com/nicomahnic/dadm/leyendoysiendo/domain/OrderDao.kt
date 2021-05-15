@@ -8,16 +8,16 @@ import com.nicomahnic.dadm.leyendoysiendo.data.entities.UserEntity
 interface OrderDao {
 
     @Query("SELECT * FROM orders ORDER BY id")
-    fun loadAllOrders(): MutableList<OrderEntity?>?
+    fun getOrders(): List<OrderEntity>?
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insertOrder(user: OrderEntity?)
+    fun insertOrder(order: OrderEntity?)
 
     @Update
-    fun updateOrder(user: OrderEntity?)
+    fun updateOrder(order: OrderEntity?)
 
     @Delete
-    fun delete(user: OrderEntity?)
+    fun delete(order: OrderEntity?)
 
     @Query("SELECT * FROM orders WHERE id = :id")
      fun loadOrderById(id: Int): OrderEntity?

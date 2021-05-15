@@ -6,16 +6,16 @@ import androidx.fragment.app.Fragment
 import android.view.View
 import android.widget.Toast
 import androidx.fragment.app.activityViewModels
-import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.nicomahnic.dadm.leyendoysiendo.R
 import com.nicomahnic.dadm.leyendoysiendo.core.Resource
-import com.nicomahnic.dadm.leyendoysiendo.data.BookDataSource
+import com.nicomahnic.dadm.leyendoysiendo.data.DataSource
 import com.nicomahnic.dadm.leyendoysiendo.data.database.AppDatabase
 import com.nicomahnic.dadm.leyendoysiendo.data.entities.Book
 import com.nicomahnic.dadm.leyendoysiendo.databinding.RegisterOrderFragmentBinding
-import com.nicomahnic.dadm.leyendoysiendo.repository.BookRepositoryImpl
+import com.nicomahnic.dadm.leyendoysiendo.repository.RepositoryImpl
 import com.nicomahnic.dadm.leyendoysiendo.ui.adapter.OrderBooksAdapter
+import com.nicomahnic.dadm.leyendoysiendo.ui.fragments.secondactivity.ViewModelFactory
 
 class RegisterOrderFragment :
     Fragment(R.layout.register_order_fragment),
@@ -25,9 +25,9 @@ class RegisterOrderFragment :
     private lateinit var binding: RegisterOrderFragmentBinding
     private lateinit var v: View
     private val viewModel: RegisterOrderViewModel by activityViewModels() {
-        BookViewModelFactory(
-            BookRepositoryImpl(
-                BookDataSource(
+        ViewModelFactory(
+            RepositoryImpl(
+                DataSource(
                     requireContext(),
                     AppDatabase.getAppDataBase(requireActivity().applicationContext)
                 )
@@ -57,6 +57,8 @@ class RegisterOrderFragment :
             if(bookList.isNotEmpty() && clientName.isNotBlank()){
                 viewModel.insertOrder(clientName, bookList)
                 Toast.makeText(requireContext(), "Orden Cargada", Toast.LENGTH_SHORT).show()
+                bookList.clear()
+                binding.edtUser.text.clear()
             }
         }
     }

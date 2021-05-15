@@ -1,14 +1,15 @@
 package com.nicomahnic.dadm.leyendoysiendo.ui.fragments.secondactivity.drawer
 
 import androidx.lifecycle.*
+import com.google.gson.Gson
 import com.nicomahnic.dadm.leyendoysiendo.core.Resource
 import com.nicomahnic.dadm.leyendoysiendo.data.entities.Book
 import com.nicomahnic.dadm.leyendoysiendo.data.entities.OrderEntity
-import com.nicomahnic.dadm.leyendoysiendo.repository.BookRepository
+import com.nicomahnic.dadm.leyendoysiendo.repository.Repository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-class RegisterOrderViewModel(private val repo: BookRepository) : ViewModel() {
+class RegisterOrderViewModel(private val repo: Repository) : ViewModel() {
     val clientName = MutableLiveData<String>()
 
     fun fetchBooks() = liveData(Dispatchers.IO) {
@@ -24,15 +25,9 @@ class RegisterOrderViewModel(private val repo: BookRepository) : ViewModel() {
     fun insertOrder(clientName: String, bookList: List<Book>){
         viewModelScope.launch {
             repo.insertOrder(
-                OrderEntity(name = clientName)
+                OrderEntity(name = clientName, books = Gson().toJson(bookList))
             )
         }
     }
 
-}
-
-class BookViewModelFactory(private val repo: BookRepository): ViewModelProvider.Factory{
-    override fun <T : ViewModel?> create(modelClass: Class<T>): T {
-        return modelClass.getConstructor(BookRepository::class.java).newInstance(repo)
-    }
 }

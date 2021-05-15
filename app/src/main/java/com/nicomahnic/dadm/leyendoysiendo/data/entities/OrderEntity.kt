@@ -12,6 +12,9 @@ data class OrderEntity(
     var id: Long = 0,
 
     @ColumnInfo(name = "client_name")
-    val name: String
+    val name: String,
+
+    @ColumnInfo(name = "list_of_books")
+    val books: String
 
 )
