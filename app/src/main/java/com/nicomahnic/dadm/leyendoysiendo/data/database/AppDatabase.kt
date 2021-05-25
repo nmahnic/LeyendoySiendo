@@ -15,7 +15,7 @@ import com.nicomahnic.dadm.leyendoysiendo.domain.OrderDao
 abstract class AppDatabase : RoomDatabase() {
 
     abstract fun userDao(): UserDao
-    abstract fun orderDato(): OrderDao
+    abstract fun orderDao(): OrderDao
 
     companion object {
         var INSTANCE: AppDatabase? = null

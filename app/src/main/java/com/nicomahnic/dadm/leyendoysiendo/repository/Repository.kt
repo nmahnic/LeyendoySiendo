@@ -8,4 +8,5 @@ interface Repository {
 
     suspend fun insertOrder(order: OrderEntity)
     suspend fun getOrders(): List<OrderEntity>?
+    suspend fun getOrdersByOrderNum(orderNum: Long): OrderEntity?
 }

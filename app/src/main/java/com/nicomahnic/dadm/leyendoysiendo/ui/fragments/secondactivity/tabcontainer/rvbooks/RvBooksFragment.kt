@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment
 import android.view.View
 import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.gson.Gson
 import com.nicomahnic.dadm.leyendoysiendo.R
 import com.nicomahnic.dadm.leyendoysiendo.core.Resource
 import com.nicomahnic.dadm.leyendoysiendo.data.database.AppDatabase
@@ -42,14 +43,15 @@ class RvBooksFragment : Fragment(R.layout.rv_books_fragment) {
         linearLayoutManager = LinearLayoutManager(context)
         binding.rvBooks.layoutManager = linearLayoutManager
 
-        viewModelTab.fetchBooks().observe(viewLifecycleOwner, { result ->
-            Log.d("NM","fetch $result")
+        viewModelTab.fetchOrder().observe(viewLifecycleOwner, { result ->
+            Log.d("NM", "fetchOrder $result")
             when(result){
                 is Resource.Loading -> {
                     Log.d("LiveData", "Loading...")
                 }
                 is Resource.Success -> {
-                    booksAdapter = BooksAdapter(requireContext(),result.data!!)
+                    val bookList = Gson().fromJson(result.data!!.books, Array<Book>::class.java).toList()
+                    booksAdapter = BooksAdapter(requireContext(), bookList)
                     binding.rvBooks.adapter = booksAdapter
                 }
                 is Resource.Failure -> {

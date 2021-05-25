@@ -42,7 +42,7 @@ class TabContainerFragment : Fragment(R.layout.tab_container_fragment) {
 
         Log.d("NM", "in TabContainer")
 
-        viewModelTab.loadOrder(args.orderNum, args.clientName)
+        viewModelTab.loadOrder(args.orderNum)
 
         TabLayoutMediator(tabLayout, viewPager) { tab, position ->
             when (position) {

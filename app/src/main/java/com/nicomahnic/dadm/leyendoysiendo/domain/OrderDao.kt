@@ -10,6 +10,9 @@ interface OrderDao {
     @Query("SELECT * FROM orders ORDER BY id")
     suspend fun getOrders(): List<OrderEntity>?
 
+    @Query("SELECT * FROM orders WHERE id = :id")
+    suspend fun getOrderByOrderNum(id: Long): OrderEntity?
+
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertOrder(order: OrderEntity?)
 
@@ -18,7 +21,4 @@ interface OrderDao {
 
     @Delete
     suspend fun delete(order: OrderEntity?)
-
-    @Query("SELECT * FROM orders WHERE id = :id")
-    suspend fun loadOrderById(id: Int): OrderEntity?
 }

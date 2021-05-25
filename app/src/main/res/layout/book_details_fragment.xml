@@ -71,7 +71,7 @@
         android:layout_marginStart="8dp"
         android:fontFamily="sans-serif-black"
         android:gravity="center"
-        android:text="N° Orden:"
+        android:text="@string/orderNumber"
         android:textColor="@color/white"
         android:textSize="26sp"
         android:textStyle="bold"
@@ -101,6 +101,7 @@
         android:layout_height="wrap_content"
         android:padding="16dp"
         android:text="Client Name"
+        android:inputType="textPersonName|text"
         android:textSize="26sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
@@ -112,7 +113,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:text="Fecha:"
+        android:text="@string/dataLabel"
         android:textSize="26sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/edt_title" />
@@ -133,7 +134,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
-        android:text="Cant. de Libros:"
+        android:text="@string/qtyBooks"
         android:textSize="26sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txt_date_label" />
@@ -150,17 +151,31 @@
         app:layout_constraintTop_toBottomOf="@+id/txt_date" />
 
     <Button
-        android:id="@+id/btnEnter"
+        android:id="@+id/btnModify"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="140dp"
         android:backgroundTint="@color/yellow_letters"
-        android:text="MODIFICAR"
+        android:text="@string/btnModify"
+        android:textColor="@color/screenBackground2"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/btnDelete"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txt_date_label2" />
+
+    <Button
+        android:id="@+id/btnDelete"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="140dp"
+        android:backgroundTint="@color/yellow_letters"
+        android:text="@string/btnDelete"
         android:textColor="@color/screenBackground2"
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/btnModify"
         app:layout_constraintTop_toBottomOf="@+id/txt_date_label2" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

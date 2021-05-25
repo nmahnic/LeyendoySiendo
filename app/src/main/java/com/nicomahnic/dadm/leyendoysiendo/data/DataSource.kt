@@ -1,7 +1,6 @@
 package com.nicomahnic.dadm.leyendoysiendo.data
 
 import android.content.Context
-import android.util.Log
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import com.nicomahnic.dadm.leyendoysiendo.data.database.AppDatabase
@@ -26,10 +25,14 @@ class DataSource(
     }
 
     suspend fun insertOrderIntoRoom(order: OrderEntity){
-        appDatabase.orderDato().insertOrder(order)
+        appDatabase.orderDao().insertOrder(order)
     }
 
     suspend fun getOrdersIntoRoom(): List<OrderEntity>? {
-        return appDatabase.orderDato().getOrders()
+        return appDatabase.orderDao().getOrders()
+    }
+
+    suspend fun getOrderByOrderNumIntoRoom(orderNum: Long): OrderEntity? {
+        return appDatabase.orderDao().getOrderByOrderNum(orderNum)
     }
 }
