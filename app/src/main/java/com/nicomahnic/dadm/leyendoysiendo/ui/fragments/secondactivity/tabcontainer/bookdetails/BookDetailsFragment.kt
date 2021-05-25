@@ -29,7 +29,7 @@ class BookDetailsFragment : Fragment(R.layout.book_details_fragment) {
         super.onStart()
 
         viewModelTab.clientName.observe(viewLifecycleOwner, { result ->
-            binding.txtTitle.text = result.toString()
+            binding.edtTitle.setText(result.toString())
         })
 
         viewModelTab.orderNum.observe(viewLifecycleOwner, { result ->
