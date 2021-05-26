@@ -13,7 +13,8 @@ import com.nicomahnic.dadm.leyendoysiendo.data.database.AppDatabase
 import com.nicomahnic.dadm.leyendoysiendo.databinding.TabContainerFragmentBinding
 import com.nicomahnic.dadm.leyendoysiendo.repository.RepositoryImpl
 import com.nicomahnic.dadm.leyendoysiendo.ui.adapter.TabsViewPagerAdapter
-import com.nicomahnic.dadm.leyendoysiendo.ui.fragments.secondactivity.ViewModelFactory
+import com.nicomahnic.dadm.leyendoysiendo.viewmodel.TabContainerViewModel
+import com.nicomahnic.dadm.leyendoysiendo.viewmodel.ViewModelFactory
 import kotlinx.android.synthetic.main.tab_container_fragment.*
 
 class TabContainerFragment : Fragment(R.layout.tab_container_fragment) {

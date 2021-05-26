@@ -1,6 +1,5 @@
 package com.nicomahnic.dadm.leyendoysiendo.ui.fragments.secondactivity.tabcontainer.rvbooks
 
-import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -10,20 +9,16 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.gson.Gson
 import com.nicomahnic.dadm.leyendoysiendo.R
 import com.nicomahnic.dadm.leyendoysiendo.core.Resource
-import com.nicomahnic.dadm.leyendoysiendo.data.database.AppDatabase
 import com.nicomahnic.dadm.leyendoysiendo.databinding.RvBooksFragmentBinding
 import com.nicomahnic.dadm.leyendoysiendo.data.entities.Book
 import com.nicomahnic.dadm.leyendoysiendo.ui.adapter.BooksAdapter
-import com.nicomahnic.dadm.leyendoysiendo.ui.fragments.secondactivity.tabcontainer.TabContainerViewModel
+import com.nicomahnic.dadm.leyendoysiendo.viewmodel.TabContainerViewModel
 
 class RvBooksFragment : Fragment(R.layout.rv_books_fragment) {
 
     private lateinit var binding: RvBooksFragmentBinding
     private val viewModelTab: TabContainerViewModel by activityViewModels()
     private lateinit var v: View
-    private lateinit var viewModel: RvBooksViewModel
-    private lateinit var bookList: List<Book>
-    private var db: AppDatabase? = null
 
     private lateinit var linearLayoutManager: LinearLayoutManager
     private lateinit var booksAdapter: BooksAdapter
@@ -31,8 +26,6 @@ class RvBooksFragment : Fragment(R.layout.rv_books_fragment) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding = RvBooksFragmentBinding.bind(view)
-        viewModel = ViewModelProvider(this).get(RvBooksViewModel::class.java)
-
         v = view
     }
 

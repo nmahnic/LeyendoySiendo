@@ -1,4 +1,4 @@
-package com.nicomahnic.dadm.leyendoysiendo.ui.fragments.secondactivity.rvorders
+package com.nicomahnic.dadm.leyendoysiendo.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.liveData

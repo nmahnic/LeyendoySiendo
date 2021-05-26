@@ -1,4 +1,4 @@
-package com.nicomahnic.dadm.leyendoysiendo.ui.fragments.secondactivity
+package com.nicomahnic.dadm.leyendoysiendo.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider

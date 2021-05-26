@@ -1,5 +1,5 @@
 
-package com.nicomahnic.dadm.leyendoysiendo.ui.fragments.secondactivity.tabcontainer
+package com.nicomahnic.dadm.leyendoysiendo.viewmodel
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -11,16 +11,6 @@ import kotlinx.coroutines.Dispatchers
 
 class TabContainerViewModel(private val repo: Repository) : ViewModel() {
     val orderNum = MutableLiveData<Long>()
-
-    fun fetchBooks() = liveData(Dispatchers.IO) {
-        emit(Resource.Loading())
-
-        try{
-            emit(Resource.Success(repo.getBooks()))
-        }catch (e: Exception){
-            emit(Resource.Failure(e))
-        }
-    }
 
     fun fetchOrder() = liveData(Dispatchers.IO) {
         emit(Resource.Loading())

@@ -15,7 +15,7 @@ import com.nicomahnic.dadm.leyendoysiendo.data.entities.Book
 import com.nicomahnic.dadm.leyendoysiendo.databinding.RegisterOrderFragmentBinding
 import com.nicomahnic.dadm.leyendoysiendo.repository.RepositoryImpl
 import com.nicomahnic.dadm.leyendoysiendo.ui.adapter.OrderBooksAdapter
-import com.nicomahnic.dadm.leyendoysiendo.ui.fragments.secondactivity.ViewModelFactory
+import com.nicomahnic.dadm.leyendoysiendo.viewmodel.ViewModelFactory
 
 class RegisterOrderFragment :
     Fragment(R.layout.register_order_fragment),

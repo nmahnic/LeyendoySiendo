@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.View
-import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -16,7 +15,8 @@ import com.nicomahnic.dadm.leyendoysiendo.databinding.RvOrdersFragmentBinding
 import com.nicomahnic.dadm.leyendoysiendo.repository.RepositoryImpl
 import com.nicomahnic.dadm.leyendoysiendo.ui.activities.SecondActivity
 import com.nicomahnic.dadm.leyendoysiendo.ui.adapter.OrdersAdapter
-import com.nicomahnic.dadm.leyendoysiendo.ui.fragments.secondactivity.ViewModelFactory
+import com.nicomahnic.dadm.leyendoysiendo.viewmodel.RvOrdersViewModel
+import com.nicomahnic.dadm.leyendoysiendo.viewmodel.ViewModelFactory
 
 class RvOrdersFragment : Fragment(R.layout.rv_orders_fragment) {
 
