@@ -51,8 +51,8 @@ class BookDetailsFragment : Fragment(R.layout.book_details_fragment) {
         binding.btnDelete.setOnClickListener {
             viewModelTab.deleteOrder()
             Toast.makeText(requireContext(), "Orden Eliminada", Toast.LENGTH_SHORT).show()
+            fragmentManager?.popBackStack()
         }
     }
-
 
 }
