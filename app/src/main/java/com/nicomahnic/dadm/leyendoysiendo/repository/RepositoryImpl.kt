@@ -18,4 +18,12 @@ class RepositoryImpl(private val dataSource: DataSource): Repository {
     override suspend fun getOrdersByOrderNum(orderNum: Long): OrderEntity? {
         return dataSource.getOrderByOrderNumIntoRoom(orderNum)
     }
+
+    override suspend fun updateOrder(order: OrderEntity){
+        dataSource.updateOrderIntoRoom(order)
+    }
+
+    override suspend fun deleteOrder(order: OrderEntity){
+        dataSource.deleteOrderIntoRoom(order)
+    }
 }

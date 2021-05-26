@@ -20,5 +20,5 @@ interface OrderDao {
     suspend fun updateOrder(order: OrderEntity?)
 
     @Delete
-    suspend fun delete(order: OrderEntity?)
+    suspend fun deleteOrder(order: OrderEntity?)
 }

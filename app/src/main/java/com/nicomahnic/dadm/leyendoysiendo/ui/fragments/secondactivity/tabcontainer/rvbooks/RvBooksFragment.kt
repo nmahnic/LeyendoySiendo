@@ -36,22 +36,15 @@ class RvBooksFragment : Fragment(R.layout.rv_books_fragment) {
         linearLayoutManager = LinearLayoutManager(context)
         binding.rvBooks.layoutManager = linearLayoutManager
 
-        viewModelTab.fetchOrder().observe(viewLifecycleOwner, { result ->
+        viewModelTab.currentOrder.observe(viewLifecycleOwner, { result ->
             Log.d("NM", "fetchOrder $result")
-            when(result){
-                is Resource.Loading -> {
-                    Log.d("LiveData", "Loading...")
-                }
-                is Resource.Success -> {
-                    val bookList = Gson().fromJson(result.data!!.books, Array<Book>::class.java).toList()
-                    booksAdapter = BooksAdapter(requireContext(), bookList)
-                    binding.rvBooks.adapter = booksAdapter
-                }
-                is Resource.Failure -> {
-                    Log.d("LiveData", "${result.exception}")
-                }
-            }
+            booksAdapter = BooksAdapter(requireContext(), getBooks(result.books))
+            binding.rvBooks.adapter = booksAdapter
         })
+    }
+
+    private fun getBooks(bookAsJson: String): List<Book> {
+        return Gson().fromJson(bookAsJson, Array<Book>::class.java).toList()
     }
 
 }

@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.View
+import android.widget.Toast
 import androidx.fragment.app.activityViewModels
 import com.nicomahnic.dadm.leyendoysiendo.R
 import com.nicomahnic.dadm.leyendoysiendo.core.Resource
@@ -42,13 +43,14 @@ class BookDetailsFragment : Fragment(R.layout.book_details_fragment) {
         })
 
         binding.btnModify.setOnClickListener {
-            //TODO(update item from DB)
             val newName = binding.edtTitle.text.toString()
             viewModelTab.updateOrder(newName)
+            Toast.makeText(requireContext(), "Nombre Modificado", Toast.LENGTH_SHORT).show()
         }
 
         binding.btnDelete.setOnClickListener {
-            //TODO(delete item from DB)
+            viewModelTab.deleteOrder()
+            Toast.makeText(requireContext(), "Orden Eliminada", Toast.LENGTH_SHORT).show()
         }
     }
 

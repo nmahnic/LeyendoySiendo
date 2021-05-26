@@ -35,4 +35,12 @@ class DataSource(
     suspend fun getOrderByOrderNumIntoRoom(orderNum: Long): OrderEntity? {
         return appDatabase.orderDao().getOrderByOrderNum(orderNum)
     }
+
+    suspend fun updateOrderIntoRoom(order: OrderEntity){
+        appDatabase.orderDao().updateOrder(order)
+    }
+
+    suspend fun deleteOrderIntoRoom(order: OrderEntity){
+        appDatabase.orderDao().deleteOrder(order)
+    }
 }

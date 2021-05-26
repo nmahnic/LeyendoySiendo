@@ -8,10 +8,12 @@ import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.navArgs
 import com.google.android.material.tabs.TabLayoutMediator
 import com.nicomahnic.dadm.leyendoysiendo.R
+import com.nicomahnic.dadm.leyendoysiendo.core.Resource
 import com.nicomahnic.dadm.leyendoysiendo.data.DataSource
 import com.nicomahnic.dadm.leyendoysiendo.data.database.AppDatabase
 import com.nicomahnic.dadm.leyendoysiendo.databinding.TabContainerFragmentBinding
 import com.nicomahnic.dadm.leyendoysiendo.repository.RepositoryImpl
+import com.nicomahnic.dadm.leyendoysiendo.ui.adapter.BooksAdapter
 import com.nicomahnic.dadm.leyendoysiendo.ui.adapter.TabsViewPagerAdapter
 import com.nicomahnic.dadm.leyendoysiendo.viewmodel.TabContainerViewModel
 import com.nicomahnic.dadm.leyendoysiendo.viewmodel.ViewModelFactory
@@ -44,6 +46,20 @@ class TabContainerFragment : Fragment(R.layout.tab_container_fragment) {
         Log.d("NM", "in TabContainer")
 
         viewModelTab.loadOrder(args.orderNum)
+        viewModelTab.fetchOrder().observe(viewLifecycleOwner, { result ->
+            Log.d("NM", "fetchOrder $result")
+            when(result){
+                is Resource.Loading -> {
+                    Log.d("LiveData", "Loading...")
+                }
+                is Resource.Success -> {
+                    viewModelTab.loadCurrentOrder(result.data!!)
+                }
+                is Resource.Failure -> {
+                    Log.d("LiveData", "${result.exception}")
+                }
+            }
+        })
 
         TabLayoutMediator(tabLayout, viewPager) { tab, position ->
             when (position) {
