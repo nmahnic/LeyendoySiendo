@@ -1,11 +1,10 @@
-<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">LeyendoySiendo</string>
     <!-- TODO: Remove or change this placeholder text -->
 
     <string name="action_settings">Preferences</string>
     <string name="orders_rcv">Orders</string>
-    <string name="tab_container">Details</string>
+    <string name="tab_container">Detail</string>
     <string name="tab_order">Order</string>
     <string name="tab_books">Books</string>
 
@@ -13,10 +12,10 @@
     <!-- Nav Drawer Screen-->
     <string name="logout">Log out</string>
     <string name="register">Load Order</string>
-    <string name="editStock">Stock Update</string>
+    <string name="editStock">Update Stock</string>
 
     <!-- New Order Screen-->
-    <string name="registerOrder">Load Order</string>
+    <string name="registerOrder">Add order</string>
 
     <!-- Details Screen-->
     <string name="btnModify">MODIFY</string>
@@ -35,4 +34,6 @@
 
     <!-- Language Preferences -->
     <string name="language_title">Choice Language</string>
+
+
 </resources>
