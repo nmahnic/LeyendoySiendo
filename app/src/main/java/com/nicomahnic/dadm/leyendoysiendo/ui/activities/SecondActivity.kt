@@ -11,18 +11,22 @@ import androidx.core.view.GravityCompat
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.navigation.ui.*
+import androidx.preference.PreferenceManager
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.load.resource.bitmap.CircleCrop
 import com.firebase.ui.auth.AuthUI
 import com.nicomahnic.dadm.leyendoysiendo.R
+import com.nicomahnic.dadm.leyendoysiendo.core.base.BaseActivity
 import kotlinx.android.synthetic.main.nav_header_main.view.*
 import kotlinx.android.synthetic.main.second_activity.*
+import java.util.*
 
 
-class SecondActivity : AppCompatActivity() {
+class SecondActivity : BaseActivity() {
 
     private lateinit var navController: NavController
+    private var language: String = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -55,6 +59,18 @@ class SecondActivity : AppCompatActivity() {
         NavigationUI.setupActionBarWithNavController(this, navController, drawerLayout)
     }
 
+    override fun onStart() {
+        super.onStart()
+
+        val prefs = PreferenceManager.getDefaultSharedPreferences(baseContext)
+        prefs.getString("language","es")?.let{
+            Log.d("NM",it)
+            language = it
+        }
+
+        dLocale = Locale(language)
+    }
+
     override fun onSupportNavigateUp(): Boolean {
         return NavigationUI.navigateUp(navController, drawerLayout)
     }
@@ -69,8 +85,9 @@ class SecondActivity : AppCompatActivity() {
         return when (item.itemId){
             R.id.action_settings -> {
                 Log.d("NM","PREFERENCES")
-                val sendIntent = Intent(baseContext, SettingsActivity::class.java)
-                startActivity(sendIntent)
+                val settingsIntent = Intent(baseContext, SettingsActivity::class.java)
+                settingsIntent.flags = Intent.FLAG_ACTIVITY_RESET_TASK_IF_NEEDED
+                startActivity(settingsIntent)
                 true
             }
             else -> super.onOptionsItemSelected(item)
