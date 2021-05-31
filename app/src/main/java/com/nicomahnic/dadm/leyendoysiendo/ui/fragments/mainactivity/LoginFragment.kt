@@ -8,6 +8,7 @@ import android.text.TextWatcher
 import android.util.Log
 import android.view.View
 import androidx.fragment.app.Fragment
+import androidx.preference.PreferenceManager
 import com.firebase.ui.auth.AuthUI
 import com.firebase.ui.auth.IdpResponse
 import com.google.android.material.snackbar.Snackbar
@@ -19,6 +20,7 @@ import com.nicomahnic.dadm.leyendoysiendo.databinding.FragmentLoginBinding
 import com.nicomahnic.dadm.leyendoysiendo.domain.UserDao
 import com.nicomahnic.dadm.leyendoysiendo.ui.activities.SecondActivity
 import kotlinx.android.synthetic.main.fragment_login.*
+import java.util.*
 
 
 /**
@@ -47,6 +49,8 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentLoginBinding.bind(view)
 
+        val prefs = PreferenceManager.getDefaultSharedPreferences(requireContext())
+        Log.d("NM",prefs.getString("language","es")!!)
 
         googleLogin()
 
@@ -57,6 +61,11 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
         binding.edtPasswd.apply { addTextChangedListener(passwdWatcher) }
 
         binding.btnEnter.isEnabled = false
+    }
+
+    private fun getLanguageNameByCode(code: String) : String{
+        val tempLocale = Locale(code)
+        return tempLocale.getDisplayLanguage(tempLocale)
     }
 
     private fun isAuth() {

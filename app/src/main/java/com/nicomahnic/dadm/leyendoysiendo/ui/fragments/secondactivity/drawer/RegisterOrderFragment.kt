@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.View
 import android.widget.Toast
 import androidx.fragment.app.activityViewModels
+import androidx.preference.PreferenceManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.nicomahnic.dadm.leyendoysiendo.R
 import com.nicomahnic.dadm.leyendoysiendo.core.Resource
@@ -15,6 +16,7 @@ import com.nicomahnic.dadm.leyendoysiendo.data.entities.Book
 import com.nicomahnic.dadm.leyendoysiendo.databinding.RegisterOrderFragmentBinding
 import com.nicomahnic.dadm.leyendoysiendo.repository.RepositoryImpl
 import com.nicomahnic.dadm.leyendoysiendo.ui.adapter.OrderBooksAdapter
+import com.nicomahnic.dadm.leyendoysiendo.viewmodel.RegisterOrderViewModel
 import com.nicomahnic.dadm.leyendoysiendo.viewmodel.ViewModelFactory
 
 class RegisterOrderFragment :
@@ -49,6 +51,10 @@ class RegisterOrderFragment :
 
     override fun onStart() {
         super.onStart()
+
+        val prefs = PreferenceManager.getDefaultSharedPreferences(requireContext())
+        Log.d("NM",prefs.getString("language","es")!!)
+
         setupRecycleView()
         setupObservers()
 

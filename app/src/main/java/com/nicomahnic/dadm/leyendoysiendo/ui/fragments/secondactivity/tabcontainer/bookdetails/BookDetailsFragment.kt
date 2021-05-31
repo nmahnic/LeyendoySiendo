@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.View
 import android.widget.Toast
 import androidx.fragment.app.activityViewModels
+import androidx.preference.PreferenceManager
 import com.nicomahnic.dadm.leyendoysiendo.R
 import com.nicomahnic.dadm.leyendoysiendo.core.Resource
 import com.nicomahnic.dadm.leyendoysiendo.databinding.BookDetailsFragmentBinding
@@ -25,6 +26,9 @@ class BookDetailsFragment : Fragment(R.layout.book_details_fragment) {
 
     override fun onStart() {
         super.onStart()
+
+        val prefs = PreferenceManager.getDefaultSharedPreferences(requireContext())
+        Log.d("NM",prefs.getString("language","es")!!)
 
         viewModelTab.fetchOrder().observe(viewLifecycleOwner, { result ->
             Log.d("NM", "fetchOrder $result")

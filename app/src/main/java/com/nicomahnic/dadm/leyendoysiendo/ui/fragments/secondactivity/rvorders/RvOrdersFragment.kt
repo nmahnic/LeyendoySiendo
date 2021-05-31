@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.View
 import androidx.fragment.app.viewModels
 import androidx.navigation.findNavController
+import androidx.preference.PreferenceManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.nicomahnic.dadm.leyendoysiendo.R
 import com.nicomahnic.dadm.leyendoysiendo.core.Resource
@@ -48,6 +49,9 @@ class RvOrdersFragment : Fragment(R.layout.rv_orders_fragment) {
 
     override fun onStart() {
         super.onStart()
+
+        val prefs = PreferenceManager.getDefaultSharedPreferences(requireContext())
+        Log.d("NM",prefs.getString("language","es")!!)
 
         binding.rvOrders.setHasFixedSize(true)
         linearLayoutManager = LinearLayoutManager(context)

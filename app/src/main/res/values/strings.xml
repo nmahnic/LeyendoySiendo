@@ -28,4 +28,12 @@
     <string name="user">Usuario</string>
     <string name="password">Contraseña</string>
     <string name="name">Nombre</string>
+
+    <!-- Preference Titles -->
+    <string name="language_header">Idiomas</string>
+
+    <!-- Language Preferences -->
+    <string name="language_title">Elija Idioma</string>
+
+
 </resources>

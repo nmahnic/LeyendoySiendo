@@ -1,4 +1,4 @@
-package com.nicomahnic.dadm.leyendoysiendo.ui.fragments.secondactivity.drawer
+package com.nicomahnic.dadm.leyendoysiendo.viewmodel
 
 import androidx.lifecycle.*
 import com.google.gson.Gson

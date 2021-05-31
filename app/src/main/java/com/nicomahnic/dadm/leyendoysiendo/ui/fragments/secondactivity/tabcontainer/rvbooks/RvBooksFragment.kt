@@ -5,6 +5,7 @@ import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.View
 import androidx.fragment.app.activityViewModels
+import androidx.preference.PreferenceManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.gson.Gson
 import com.nicomahnic.dadm.leyendoysiendo.R
@@ -31,6 +32,9 @@ class RvBooksFragment : Fragment(R.layout.rv_books_fragment) {
 
     override fun onStart() {
         super.onStart()
+
+        val prefs = PreferenceManager.getDefaultSharedPreferences(requireContext())
+        Log.d("NM",prefs.getString("language","es")!!)
 
         binding.rvBooks.setHasFixedSize(true)
         linearLayoutManager = LinearLayoutManager(context)

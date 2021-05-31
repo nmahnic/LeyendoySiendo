@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.View
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.navArgs
+import androidx.preference.PreferenceManager
 import com.google.android.material.tabs.TabLayoutMediator
 import com.nicomahnic.dadm.leyendoysiendo.R
 import com.nicomahnic.dadm.leyendoysiendo.core.Resource
@@ -44,6 +45,8 @@ class TabContainerFragment : Fragment(R.layout.tab_container_fragment) {
         viewPager.adapter = TabsViewPagerAdapter(requireActivity())
 
         Log.d("NM", "in TabContainer")
+        val prefs = PreferenceManager.getDefaultSharedPreferences(requireContext())
+        Log.d("NM",prefs.getString("language","es")!!)
 
         viewModelTab.loadOrder(args.orderNum)
         viewModelTab.fetchOrder().observe(viewLifecycleOwner, { result ->
