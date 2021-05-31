@@ -6,7 +6,6 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.nicomahnic.dadm.leyendoysiendo.R
 import com.nicomahnic.dadm.leyendoysiendo.databinding.ItemOrderBinding
-import com.nicomahnic.dadm.leyendoysiendo.data.entities.Order
 import com.nicomahnic.dadm.leyendoysiendo.data.entities.OrderEntity
 
 class OrdersAdapter(

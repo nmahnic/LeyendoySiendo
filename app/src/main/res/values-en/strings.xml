@@ -34,6 +34,7 @@
 
     <!-- Language Preferences -->
     <string name="language_title">Choice Language</string>
-
+    <string name="load">Load</string>
+    <string name="client">Client</string>
 
 </resources>

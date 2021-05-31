@@ -58,6 +58,7 @@ class RegisterOrderFragment :
         setupRecycleView()
         setupObservers()
 
+
         binding.btnEnter.setOnClickListener {
             val clientName = binding.edtUser.text.toString()
             if(bookList.isNotEmpty() && clientName.isNotBlank()){

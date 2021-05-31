@@ -15,11 +15,13 @@
         <activity
             android:name=".ui.activities.SettingsActivity"
             android:label="@string/action_settings"
-            android:launchMode="standard">
+            android:launchMode="standard"
+            android:configChanges="locale">
         </activity>
         <activity
             android:name=".ui.activities.MainActivity"
-            android:theme="@style/Theme.LeyendoySiendo">
+            android:theme="@style/Theme.LeyendoySiendo"
+            android:configChanges="locale">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
